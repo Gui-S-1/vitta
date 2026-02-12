@@ -1566,15 +1566,25 @@ h1, h2, h3, h4 {
         width: 80%;
         max-width: 360px;
         height: 100vh;
-        background: rgba(15, 15, 15, 0.98);
-        backdrop-filter: blur(30px);
+        background: linear-gradient(180deg, rgba(10,10,10,0.99) 0%, rgba(20,10,15,0.99) 100%);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
         flex-direction: column;
-        padding: 120px 40px 40px;
+        padding: 0 0 40px;
         gap: 0;
         transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        border-left: 1px solid rgba(139, 26, 43, 0.2);
+        border-left: 1px solid rgba(139, 26, 43, 0.15);
         z-index: 1000;
         overflow-y: auto;
+    }
+
+    .nav-menu::before {
+        content: '';
+        display: block;
+        padding: 100px 32px 24px;
+        background: linear-gradient(135deg, rgba(139,26,43,0.2) 0%, transparent 100%);
+        border-bottom: 1px solid rgba(139,26,43,0.15);
+        margin-bottom: 8px;
     }
 
     .nav-menu.open {
@@ -1582,11 +1592,43 @@ h1, h2, h3, h4 {
     }
 
     .nav-link {
-        padding: 16px 0;
-        font-size: 1.1rem;
+        padding: 18px 32px;
+        font-size: 1rem;
+        font-weight: 500;
         width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+        border-bottom: none;
         border-radius: 0;
+        color: var(--text-secondary);
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--crimson-light);
+        border-radius: 0 3px 3px 0;
+        opacity: 0;
+        transform: scaleY(0);
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--white) !important;
+        background: rgba(139,26,43,0.1);
+        padding-left: 36px;
+    }
+
+    .nav-link.active::before {
+        display: block;
+        opacity: 1;
+        transform: scaleY(0.6);
     }
 
     .nav-link.active::after {
@@ -1594,10 +1636,20 @@ h1, h2, h3, h4 {
     }
 
     .nav-cta {
-        margin-top: 20px;
+        margin: 16px 32px 0 !important;
         text-align: center;
         justify-content: center;
-        border-radius: 100px !important;
+        border-radius: 12px !important;
+        padding: 14px 28px !important;
+        font-size: 0.95rem !important;
+        background: var(--gradient-crimson) !important;
+        box-shadow: 0 8px 24px rgba(139,26,43,0.3) !important;
+        width: calc(100% - 64px);
+    }
+
+    .nav-cta:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 12px 32px rgba(139,26,43,0.5) !important;
     }
 
     .logo-img {
