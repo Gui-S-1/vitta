@@ -4,7 +4,7 @@
 
 // ─── IMAGE SOURCES (Unsplash / Pexels CDN) ───
 const IMG = {
-    hero: 'https://images.unsplash.com/photo-1569288052389-dac9b0ac9eac?w=1400&q=80',
+    hero: 'imagem_2026-02-10_093555363.png',
     heroSide: 'imagem_2026-02-10_093555363.png',
     eggs1: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=800&q=80',
     eggs2: 'https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?w=800&q=80',
