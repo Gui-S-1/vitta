@@ -125,7 +125,7 @@ h1, h2, h3, h4 {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 12px 0;
+    padding: 8px 0;
     transition: var(--transition);
     background: transparent;
 }
@@ -134,7 +134,7 @@ h1, h2, h3, h4 {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 6px 0;
+    padding: 4px 0;
     border-bottom: 1px solid rgba(139, 26, 43, 0.2);
 }
 
@@ -153,13 +153,13 @@ h1, h2, h3, h4 {
 }
 
 .logo-img {
-    height: 100px;
+    height: 110px;
     width: auto;
     transition: var(--transition);
 }
 
 #navbar.scrolled .logo-img {
-    height: 70px;
+    height: 75px;
 }
 
 .nav-menu {
