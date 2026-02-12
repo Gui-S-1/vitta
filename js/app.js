@@ -1,25 +1,25 @@
-/* ══════════════════════════════════════════
-   GRANJA VITTA — SPA Router & Pages
-   ══════════════════════════════════════════ */
+
+─ IMAGE SOURCES (Unsplash / Pexels CDN) ───
 const IMG = {
-    hero: 'https:
+    hero: 'https://images.unsplash.com/photo-1569288052389-dac9b0ac9eac?w=1400&q=80',
     heroSide: 'imagem_2026-02-10_093555363.png',
-    eggs1: 'https:
-    eggs2: 'https:
-    eggs3: 'https:
-    eggsFarm: 'https:
-    eggsCarton: 'https:
-    eggsOrganic: 'https:
-    farm1: 'https:
-    farm2: 'https:
-    chickens: 'https:
-    recOmelete: 'https:
-    recBolo: 'https:
-    recQuiche: 'https:
-    recPancake: 'https:
-    recPudim: 'https:
-    recFrittata: 'https:
+    eggs1: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=800&q=80',
+    eggs2: 'https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?w=800&q=80',
+    eggs3: 'https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=800&q=80',
+    eggsFarm: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80',
+    eggsCarton: 'https://images.unsplash.com/photo-1569288052389-dac9b0ac9eac?w=800&q=80',
+    eggsOrganic: 'https://images.unsplash.com/photo-1598965675045-45c5e72c7d05?w=800&q=80',
+    farm1: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=80',
+    farm2: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80',
+    chickens: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80',
+    recOmelete: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80',
+    recBolo: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80',
+    recQuiche: 'https://images.unsplash.com/photo-1635321593217-40050ad13c74?w=800&q=80',
+    recPancake: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80',
+    recPudim: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&q=80',
+    recFrittata: 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=800&q=80',
 };
+─ RECIPES DATA ───
 const recipes = [
     {
         id: 'omelete-especial',
@@ -194,6 +194,7 @@ const recipes = [
         ]
     }
 ];
+─ PAGE TEMPLATES ───
 function homePage() {
     return `
     <div class="page-transition">
@@ -738,6 +739,7 @@ function notFoundPage() {
         </section>
     </div>`;
 }
+─ CARD HELPERS ───
 function productCard(title, desc, img, badge, features) {
     return `
     <div class="product-card reveal">
@@ -782,9 +784,12 @@ const routes = [
     { path: '/contato', handler: contatoPage },
 ];
 function resolveRoute(path) {
+    // Clean path
     path = path.replace(/\/+$/, '') || '/';
+    // Check static routes
     const staticRoute = routes.find(r => r.path === path);
     if (staticRoute) return staticRoute.handler();
+    // Check dynamic route for recipe detail
     const recipeMatch = path.match(/^\/receitas\/(.+)$/);
     if (recipeMatch) return receitaDetailPage(recipeMatch[1]);
     return notFoundPage();
@@ -797,6 +802,7 @@ function renderPage() {
     const app = document.getElementById('app');
     const path = window.location.pathname;
     app.innerHTML = resolveRoute(path);
+    // Update active nav link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
@@ -806,9 +812,12 @@ function renderPage() {
             link.classList.add('active');
         }
     });
+    // Close mobile menu
     document.getElementById('navMenu').classList.remove('open');
     document.getElementById('navToggle').classList.remove('active');
+    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'instant' });
+    // Update page title
     const titles = {
         '/': 'Granja Vitta | Ovo é Vida',
         '/produtos': 'Produtos | Granja Vitta',
@@ -817,17 +826,22 @@ function renderPage() {
         '/contato': 'Contato | Granja Vitta'
     };
     document.title = titles[path] || 'Granja Vitta | Ovo é Vida';
+    // Reinitialize page features
     setTimeout(() => {
         initRevealAnimations();
         initCounters();
         createParticles();
     }, 100);
 }
+─ EVENT LISTENERS ───
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove loader
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
     }, 1500);
+    // Render initial page
     renderPage();
+    // Handle all link clicks
     document.addEventListener('click', (e) => {
         const link = e.target.closest('[data-link]');
         if (link) {
@@ -835,23 +849,29 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateTo(link.getAttribute('href'));
         }
     });
+    // Handle browser back/forward
     window.addEventListener('popstate', renderPage);
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
         navbar.classList.toggle('scrolled', window.scrollY > 50);
+        // Back to top button
         const backBtn = document.querySelector('.back-to-top');
         if (backBtn) backBtn.classList.toggle('visible', window.scrollY > 600);
     });
+    // Mobile nav toggle
     document.getElementById('navToggle').addEventListener('click', () => {
         document.getElementById('navMenu').classList.toggle('open');
         document.getElementById('navToggle').classList.toggle('active');
     });
+    // Add back to top button
     const backBtn = document.createElement('button');
     backBtn.className = 'back-to-top';
     backBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
     backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.appendChild(backBtn);
 });
+─ SCROLL REVEAL ───
 function initRevealAnimations() {
     const reveals = document.querySelectorAll('.reveal:not(.visible)');
     const observer = new IntersectionObserver((entries) => {
@@ -864,6 +884,7 @@ function initRevealAnimations() {
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
 }
+─ COUNTER ANIMATION ───
 function initCounters() {
     const counters = document.querySelectorAll('[data-count]');
     counters.forEach(counter => {
@@ -887,7 +908,7 @@ function animateCounter(el, target) {
     function update(currentTime) {
         const elapsed = currentTime - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); 
+        const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
         const current = Math.floor(eased * target);
         if (target >= 1000000) {
             el.textContent = (current / 1000000).toFixed(1) + 'M+';
@@ -902,6 +923,7 @@ function animateCounter(el, target) {
     }
     requestAnimationFrame(update);
 }
+─ PARTICLES ───
 function createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
@@ -917,6 +939,7 @@ function createParticles() {
         container.appendChild(particle);
     }
 }
+─ CONTACT FORM HANDLER ───
 function handleContactSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
@@ -928,4 +951,4 @@ function handleContactSubmit(e) {
         btn.style.background = '';
         e.target.reset();
     }, 3000);
-}
+}

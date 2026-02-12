@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════════
-   GRANJA VITTA — OVO É VIDA
-   Dark theme with crimson/wine red accents
-   ══════════════════════════════════════════ */
+
 :root {
     --bg-primary: #0a0a0a;
     --bg-secondary: #111111;
@@ -183,6 +180,7 @@ h1, h2, h3, h4 {
 .nav-cta.active::after {
     display: none;
 }
+/* Mobile Toggle */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -376,6 +374,7 @@ h1, h2, h3, h4 {
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
 }
+/* Giant Hero Logo */
 .hero-logo-showcase {
     position: relative;
     display: flex;
@@ -1378,4 +1377,4 @@ h1, h2, h3, h4 {
     .btn {
         justify-content: center;
     }
-}
+}
