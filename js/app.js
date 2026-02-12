@@ -1,5 +1,8 @@
+/* ══════════════════════════════════════════
+   GRANJA VITTA — SPA Router & Pages
+   ══════════════════════════════════════════ */
 
-─ IMAGE SOURCES (Unsplash / Pexels CDN) ───
+// ─── IMAGE SOURCES (Unsplash / Pexels CDN) ───
 const IMG = {
     hero: 'https://images.unsplash.com/photo-1569288052389-dac9b0ac9eac?w=1400&q=80',
     heroSide: 'imagem_2026-02-10_093555363.png',
@@ -19,7 +22,8 @@ const IMG = {
     recPudim: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&q=80',
     recFrittata: 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=800&q=80',
 };
-─ RECIPES DATA ───
+
+// ─── RECIPES DATA ───
 const recipes = [
     {
         id: 'omelete-especial',
@@ -194,7 +198,8 @@ const recipes = [
         ]
     }
 ];
-─ PAGE TEMPLATES ───
+
+// ─── PAGE TEMPLATES ───
 function homePage() {
     return `
     <div class="page-transition">
@@ -244,6 +249,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- STATS -->
         <section class="stats-band">
             <div class="stats-grid">
@@ -265,6 +271,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- PRODUCTS PREVIEW -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -283,6 +290,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- ABOUT PREVIEW -->
         <section class="section">
             <div class="section-container">
@@ -333,6 +341,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- RECIPES PREVIEW -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -349,6 +358,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- CTA BANNER -->
         <section class="cta-banner">
             <div class="section-container">
@@ -362,6 +372,7 @@ function homePage() {
         </section>
     </div>`;
 }
+
 function produtosPage() {
     return `
     <div class="page-transition">
@@ -372,6 +383,7 @@ function produtosPage() {
                     <h2 class="section-title">Nossos <span class="accent">Produtos</span></h2>
                     <p class="section-subtitle">Cada ovo Granja Vitta é sinônimo de frescor, sabor e nutrição. Conheça nossas linhas de produtos.</p>
                 </div>
+
                 <div class="products-grid">
                     ${productCard('Ovos Brancos — 12 unidades', 'Ovos brancos tipo grande, selecionados um a um. Ideais para o consumo diário, com gema cremosa e casca resistente. A escolha perfeita para toda receita.', IMG.eggs1, 'Mais Vendido', ['Fresco', 'Nutritivo'])}
                     ${productCard('Ovos Brancos — 30 unidades', 'Embalagem econômica perfeita para famílias grandes ou uso profissional. Mesma qualidade Vitta em maior quantidade.', IMG.eggsCarton, 'Econômico', ['Quantidade', 'Economia'])}
@@ -382,6 +394,7 @@ function produtosPage() {
                 </div>
             </div>
         </section>
+
         <!-- QUALITY SECTION -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -428,6 +441,7 @@ function produtosPage() {
                 </div>
             </div>
         </section>
+
         <section class="cta-banner">
             <div class="section-container">
                 <div class="cta-content reveal">
@@ -440,6 +454,7 @@ function produtosPage() {
         </section>
     </div>`;
 }
+
 function receitasPage() {
     return `
     <div class="page-transition">
@@ -455,6 +470,7 @@ function receitasPage() {
                 </div>
             </div>
         </section>
+
         <section class="cta-banner">
             <div class="section-container">
                 <div class="cta-content reveal">
@@ -467,9 +483,11 @@ function receitasPage() {
         </section>
     </div>`;
 }
+
 function receitaDetailPage(slug) {
     const recipe = recipes.find(r => r.id === slug);
     if (!recipe) return notFoundPage();
+
     return `
     <div class="page-transition recipe-detail">
         <div class="section-container">
@@ -485,6 +503,7 @@ function receitaDetailPage(slug) {
                     </div>
                 </div>
             </div>
+
             <div class="recipe-detail-grid">
                 <div class="recipe-instructions">
                     <h3>Modo de Preparo</h3>
@@ -512,6 +531,7 @@ function receitaDetailPage(slug) {
         </div>
     </div>`;
 }
+
 function quemSomosPage() {
     return `
     <div class="page-transition">
@@ -533,6 +553,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- STATS BAND -->
         <section class="stats-band">
             <div class="stats-grid">
@@ -554,6 +575,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- MISSÃO VISÃO VALORES -->
         <section class="section">
             <div class="section-container">
@@ -586,6 +608,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- TIMELINE -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -629,6 +652,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- CTA -->
         <section class="cta-banner">
             <div class="section-container">
@@ -642,6 +666,7 @@ function quemSomosPage() {
         </section>
     </div>`;
 }
+
 function contatoPage() {
     return `
     <div class="page-transition">
@@ -726,6 +751,7 @@ function contatoPage() {
         </section>
     </div>`;
 }
+
 function notFoundPage() {
     return `
     <div class="page-transition">
@@ -739,7 +765,8 @@ function notFoundPage() {
         </section>
     </div>`;
 }
-─ CARD HELPERS ───
+
+// ─── CARD HELPERS ───
 function productCard(title, desc, img, badge, features) {
     return `
     <div class="product-card reveal">
@@ -761,6 +788,7 @@ function productCard(title, desc, img, badge, features) {
         </div>
     </div>`;
 }
+
 function recipeCard(recipe) {
     return `
     <a href="/receitas/${recipe.id}" data-link class="recipe-card reveal">
@@ -776,6 +804,11 @@ function recipeCard(recipe) {
         </div>
     </a>`;
 }
+
+
+// ═══════════════════════════════════════════
+// SPA ROUTER
+// ═══════════════════════════════════════════
 const routes = [
     { path: '/', handler: homePage },
     { path: '/produtos', handler: produtosPage },
@@ -783,92 +816,79 @@ const routes = [
     { path: '/quem-somos', handler: quemSomosPage },
     { path: '/contato', handler: contatoPage },
 ];
+
 function resolveRoute(path) {
     // Clean path
     path = path.replace(/\/+$/, '') || '/';
+
     // Check static routes
     const staticRoute = routes.find(r => r.path === path);
     if (staticRoute) return staticRoute.handler();
+
     // Check dynamic route for recipe detail
     const recipeMatch = path.match(/^\/receitas\/(.+)$/);
     if (recipeMatch) return receitaDetailPage(recipeMatch[1]);
+
     return notFoundPage();
 }
+
 function navigateTo(url) {
     history.pushState(null, null, url);
     renderPage();
 }
-function renderPage() {
-    try {
-        const app = document.getElementById('app');
-        const path = window.location.pathname;
-        
-        if (!app) {
-            console.error('Elemento #app não encontrado!');
-            return;
-        }
-        
-        const content = resolveRoute(path);
-        app.innerHTML = content;
-        
-        // Update active nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href');
-            if (href === path || (path.startsWith(href) && href !== '/')) {
-                link.classList.add('active');
-            } else if (path === '/' && href === '/') {
-                link.classList.add('active');
-            }
-        });
-        
-        // Close mobile menu
-        document.getElementById('navMenu').classList.remove('open');
-        document.getElementById('navToggle').classList.remove('active');
-        
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        
-        // Update page title
-        const titles = {
-            '/': 'Granja Vitta | Ovo é Vida',
-            '/produtos': 'Produtos | Granja Vitta',
-            '/receitas': 'Receitas | Granja Vitta',
-            '/quem-somos': 'Quem Somos | Granja Vitta',
-            '/contato': 'Contato | Granja Vitta'
-        };
-        document.title = titles[path] || 'Granja Vitta | Ovo é Vida';
-        
-        // Reinitialize page features
-        setTimeout(() => {
-            initRevealAnimations();
-            initCounters();
-            createParticles();
-        }, 100);
-    } catch (error) {
-        console.error('Erro ao renderizar página:', error);
-    }
-}
-─ EVENT LISTENERS ───
-// FORÇAR REMOÇÃO DO LOADER - MÚLTIPLAS ESTRATÉGIAS
-const removeLoader = () => {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.classList.add('hidden');
-        console.log('Loader removido');
-    }
-};
 
-// Estratégia 1: DOMContentLoaded (mais rápido)
+function renderPage() {
+    const app = document.getElementById('app');
+    const path = window.location.pathname;
+
+    app.innerHTML = resolveRoute(path);
+
+    // Update active nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === path || (path.startsWith(href) && href !== '/')) {
+            link.classList.add('active');
+        } else if (path === '/' && href === '/') {
+            link.classList.add('active');
+        }
+    });
+
+    // Close mobile menu
+    document.getElementById('navMenu').classList.remove('open');
+    document.getElementById('navToggle').classList.remove('active');
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Update page title
+    const titles = {
+        '/': 'Granja Vitta | Ovo é Vida',
+        '/produtos': 'Produtos | Granja Vitta',
+        '/receitas': 'Receitas | Granja Vitta',
+        '/quem-somos': 'Quem Somos | Granja Vitta',
+        '/contato': 'Contato | Granja Vitta'
+    };
+    document.title = titles[path] || 'Granja Vitta | Ovo é Vida';
+
+    // Reinitialize page features
+    setTimeout(() => {
+        initRevealAnimations();
+        initCounters();
+        createParticles();
+    }, 100);
+}
+
+// ─── EVENT LISTENERS ───
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(removeLoader, 500);
-    
-    try {
-        // Render initial page
-        renderPage();
-    } catch (e) {
-        console.error('Error rendering page:', e);
-    }
+    // Remove loader
+    setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+    }, 1500);
+
+    // Render initial page
+    renderPage();
+
     // Handle all link clicks
     document.addEventListener('click', (e) => {
         const link = e.target.closest('[data-link]');
@@ -877,21 +897,26 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateTo(link.getAttribute('href'));
         }
     });
+
     // Handle browser back/forward
     window.addEventListener('popstate', renderPage);
+
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
         navbar.classList.toggle('scrolled', window.scrollY > 50);
+
         // Back to top button
         const backBtn = document.querySelector('.back-to-top');
         if (backBtn) backBtn.classList.toggle('visible', window.scrollY > 600);
     });
+
     // Mobile nav toggle
     document.getElementById('navToggle').addEventListener('click', () => {
         document.getElementById('navMenu').classList.toggle('open');
         document.getElementById('navToggle').classList.toggle('active');
     });
+
     // Add back to top button
     const backBtn = document.createElement('button');
     backBtn.className = 'back-to-top';
@@ -900,13 +925,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(backBtn);
 });
 
-// Estratégia 2: window.onload (backup se DOMContentLoaded não disparar)
-window.addEventListener('load', removeLoader);
-
-// Estratégia 3: Timeout absoluto (última linha de defesa)
-setTimeout(removeLoader, 2000);
-
-─ SCROLL REVEAL ───
+// ─── SCROLL REVEAL ───
 function initRevealAnimations() {
     const reveals = document.querySelectorAll('.reveal:not(.visible)');
     const observer = new IntersectionObserver((entries) => {
@@ -917,13 +936,16 @@ function initRevealAnimations() {
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
     reveals.forEach(el => observer.observe(el));
 }
-─ COUNTER ANIMATION ───
+
+// ─── COUNTER ANIMATION ───
 function initCounters() {
     const counters = document.querySelectorAll('[data-count]');
     counters.forEach(counter => {
         if (counter.dataset.animated) return;
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -934,17 +956,22 @@ function initCounters() {
                 }
             });
         }, { threshold: 0.5 });
+
         observer.observe(counter);
     });
 }
+
 function animateCounter(el, target) {
     const duration = 2000;
     const start = performance.now();
+
     function update(currentTime) {
         const elapsed = currentTime - start;
         const progress = Math.min(elapsed / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+
         const current = Math.floor(eased * target);
+
         if (target >= 1000000) {
             el.textContent = (current / 1000000).toFixed(1) + 'M+';
         } else if (target >= 1000) {
@@ -952,17 +979,21 @@ function animateCounter(el, target) {
         } else {
             el.textContent = current + (target === 100 ? '%' : '+');
         }
+
         if (progress < 1) {
             requestAnimationFrame(update);
         }
     }
+
     requestAnimationFrame(update);
 }
-─ PARTICLES ───
+
+// ─── PARTICLES ───
 function createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
     container.innerHTML = '';
+
     for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -974,13 +1005,15 @@ function createParticles() {
         container.appendChild(particle);
     }
 }
-─ CONTACT FORM HANDLER ───
+
+// ─── CONTACT FORM HANDLER ───
 function handleContactSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
     btn.innerHTML = '✓ Mensagem Enviada!';
     btn.style.background = 'linear-gradient(135deg, #2D7D46 0%, #45B369 100%)';
+
     setTimeout(() => {
         btn.innerHTML = originalText;
         btn.style.background = '';
