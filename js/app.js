@@ -799,54 +799,76 @@ function navigateTo(url) {
     renderPage();
 }
 function renderPage() {
-    const app = document.getElementById('app');
-    const path = window.location.pathname;
-    app.innerHTML = resolveRoute(path);
-    // Update active nav link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href');
-        if (href === path || (path.startsWith(href) && href !== '/')) {
-            link.classList.add('active');
-        } else if (path === '/' && href === '/') {
-            link.classList.add('active');
+    try {
+        const app = document.getElementById('app');
+        const path = window.location.pathname;
+        
+        if (!app) {
+            console.error('Elemento #app não encontrado!');
+            return;
         }
-    });
-    // Close mobile menu
-    document.getElementById('navMenu').classList.remove('open');
-    document.getElementById('navToggle').classList.remove('active');
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    // Update page title
-    const titles = {
-        '/': 'Granja Vitta | Ovo é Vida',
-        '/produtos': 'Produtos | Granja Vitta',
-        '/receitas': 'Receitas | Granja Vitta',
-        '/quem-somos': 'Quem Somos | Granja Vitta',
-        '/contato': 'Contato | Granja Vitta'
-    };
-    document.title = titles[path] || 'Granja Vitta | Ovo é Vida';
-    // Reinitialize page features
-    setTimeout(() => {
-        initRevealAnimations();
-        initCounters();
-        createParticles();
-    }, 100);
+        
+        const content = resolveRoute(path);
+        app.innerHTML = content;
+        
+        // Update active nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === path || (path.startsWith(href) && href !== '/')) {
+                link.classList.add('active');
+            } else if (path === '/' && href === '/') {
+                link.classList.add('active');
+            }
+        });
+        
+        // Close mobile menu
+        document.getElementById('navMenu').classList.remove('open');
+        document.getElementById('navToggle').classList.remove('active');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        
+        // Update page title
+        const titles = {
+            '/': 'Granja Vitta | Ovo é Vida',
+            '/produtos': 'Produtos | Granja Vitta',
+            '/receitas': 'Receitas | Granja Vitta',
+            '/quem-somos': 'Quem Somos | Granja Vitta',
+            '/contato': 'Contato | Granja Vitta'
+        };
+        document.title = titles[path] || 'Granja Vitta | Ovo é Vida';
+        
+        // Reinitialize page features
+        setTimeout(() => {
+            initRevealAnimations();
+            initCounters();
+            createParticles();
+        }, 100);
+    } catch (error) {
+        console.error('Erro ao renderizar página:', error);
+    }
 }
 ─ EVENT LISTENERS ───
+// FORÇAR REMOÇÃO DO LOADER - MÚLTIPLAS ESTRATÉGIAS
+const removeLoader = () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.classList.add('hidden');
+        console.log('Loader removido');
+    }
+};
+
+// Estratégia 1: DOMContentLoaded (mais rápido)
 document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(removeLoader, 500);
+    
     try {
         // Render initial page
         renderPage();
     } catch (e) {
         console.error('Error rendering page:', e);
-        // Remove loader even if there's an error
-        document.getElementById('loader').classList.add('hidden');
     }
-    // Remove loader after delay
-    setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-    }, 1500);
     // Handle all link clicks
     document.addEventListener('click', (e) => {
         const link = e.target.closest('[data-link]');
@@ -877,6 +899,13 @@ document.addEventListener('DOMContentLoaded', () => {
     backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.appendChild(backBtn);
 });
+
+// Estratégia 2: window.onload (backup se DOMContentLoaded não disparar)
+window.addEventListener('load', removeLoader);
+
+// Estratégia 3: Timeout absoluto (última linha de defesa)
+setTimeout(removeLoader, 2000);
+
 ─ SCROLL REVEAL ───
 function initRevealAnimations() {
     const reveals = document.querySelectorAll('.reveal:not(.visible)');
