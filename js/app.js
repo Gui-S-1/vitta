@@ -835,12 +835,18 @@ function renderPage() {
 }
 ─ EVENT LISTENERS ───
 document.addEventListener('DOMContentLoaded', () => {
-    // Remove loader
+    try {
+        // Render initial page
+        renderPage();
+    } catch (e) {
+        console.error('Error rendering page:', e);
+        // Remove loader even if there's an error
+        document.getElementById('loader').classList.add('hidden');
+    }
+    // Remove loader after delay
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
     }, 1500);
-    // Render initial page
-    renderPage();
     // Handle all link clicks
     document.addEventListener('click', (e) => {
         const link = e.target.closest('[data-link]');
@@ -951,4 +957,4 @@ function handleContactSubmit(e) {
         btn.style.background = '';
         e.target.reset();
     }, 3000);
-}
+}
