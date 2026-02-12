@@ -1,25 +1,29 @@
 /* ══════════════════════════════════════════
    GRANJA VITTA — SPA Router & Pages
    ══════════════════════════════════════════ */
+
+// ─── IMAGE SOURCES (Unsplash / Pexels CDN) ───
 const IMG = {
-    hero: 'https:
+    hero: 'https://images.unsplash.com/photo-1569288052389-dac9b0ac9eac?w=1400&q=80',
     heroSide: 'imagem_2026-02-10_093555363.png',
-    eggs1: 'https:
-    eggs2: 'https:
-    eggs3: 'https:
-    eggsFarm: 'https:
-    eggsCarton: 'https:
-    eggsOrganic: 'https:
-    farm1: 'https:
-    farm2: 'https:
-    chickens: 'https:
-    recOmelete: 'https:
-    recBolo: 'https:
-    recQuiche: 'https:
-    recPancake: 'https:
-    recPudim: 'https:
-    recFrittata: 'https:
+    eggs1: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=800&q=80',
+    eggs2: 'https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?w=800&q=80',
+    eggs3: 'https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=800&q=80',
+    eggsFarm: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80',
+    eggsCarton: 'https://images.unsplash.com/photo-1569288052389-dac9b0ac9eac?w=800&q=80',
+    eggsOrganic: 'https://images.unsplash.com/photo-1598965675045-45c5e72c7d05?w=800&q=80',
+    farm1: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=80',
+    farm2: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80',
+    chickens: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80',
+    recOmelete: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80',
+    recBolo: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80',
+    recQuiche: 'https://images.unsplash.com/photo-1635321593217-40050ad13c74?w=800&q=80',
+    recPancake: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80',
+    recPudim: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=800&q=80',
+    recFrittata: 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=800&q=80',
 };
+
+// ─── RECIPES DATA ───
 const recipes = [
     {
         id: 'omelete-especial',
@@ -194,6 +198,8 @@ const recipes = [
         ]
     }
 ];
+
+// ─── PAGE TEMPLATES ───
 function homePage() {
     return `
     <div class="page-transition">
@@ -243,6 +249,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- STATS -->
         <section class="stats-band">
             <div class="stats-grid">
@@ -264,6 +271,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- PRODUCTS PREVIEW -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -282,6 +290,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- ABOUT PREVIEW -->
         <section class="section">
             <div class="section-container">
@@ -332,6 +341,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- RECIPES PREVIEW -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -348,6 +358,7 @@ function homePage() {
                 </div>
             </div>
         </section>
+
         <!-- CTA BANNER -->
         <section class="cta-banner">
             <div class="section-container">
@@ -361,6 +372,7 @@ function homePage() {
         </section>
     </div>`;
 }
+
 function produtosPage() {
     return `
     <div class="page-transition">
@@ -371,6 +383,7 @@ function produtosPage() {
                     <h2 class="section-title">Nossos <span class="accent">Produtos</span></h2>
                     <p class="section-subtitle">Cada ovo Granja Vitta é sinônimo de frescor, sabor e nutrição. Conheça nossas linhas de produtos.</p>
                 </div>
+
                 <div class="products-grid">
                     ${productCard('Ovos Brancos — 12 unidades', 'Ovos brancos tipo grande, selecionados um a um. Ideais para o consumo diário, com gema cremosa e casca resistente. A escolha perfeita para toda receita.', IMG.eggs1, 'Mais Vendido', ['Fresco', 'Nutritivo'])}
                     ${productCard('Ovos Brancos — 30 unidades', 'Embalagem econômica perfeita para famílias grandes ou uso profissional. Mesma qualidade Vitta em maior quantidade.', IMG.eggsCarton, 'Econômico', ['Quantidade', 'Economia'])}
@@ -381,6 +394,7 @@ function produtosPage() {
                 </div>
             </div>
         </section>
+
         <!-- QUALITY SECTION -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -427,6 +441,7 @@ function produtosPage() {
                 </div>
             </div>
         </section>
+
         <section class="cta-banner">
             <div class="section-container">
                 <div class="cta-content reveal">
@@ -439,6 +454,7 @@ function produtosPage() {
         </section>
     </div>`;
 }
+
 function receitasPage() {
     return `
     <div class="page-transition">
@@ -454,6 +470,7 @@ function receitasPage() {
                 </div>
             </div>
         </section>
+
         <section class="cta-banner">
             <div class="section-container">
                 <div class="cta-content reveal">
@@ -466,9 +483,11 @@ function receitasPage() {
         </section>
     </div>`;
 }
+
 function receitaDetailPage(slug) {
     const recipe = recipes.find(r => r.id === slug);
     if (!recipe) return notFoundPage();
+
     return `
     <div class="page-transition recipe-detail">
         <div class="section-container">
@@ -484,6 +503,7 @@ function receitaDetailPage(slug) {
                     </div>
                 </div>
             </div>
+
             <div class="recipe-detail-grid">
                 <div class="recipe-instructions">
                     <h3>Modo de Preparo</h3>
@@ -511,6 +531,7 @@ function receitaDetailPage(slug) {
         </div>
     </div>`;
 }
+
 function quemSomosPage() {
     return `
     <div class="page-transition">
@@ -532,6 +553,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- STATS BAND -->
         <section class="stats-band">
             <div class="stats-grid">
@@ -553,6 +575,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- MISSÃO VISÃO VALORES -->
         <section class="section">
             <div class="section-container">
@@ -585,6 +608,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- TIMELINE -->
         <section class="section" style="background: var(--bg-secondary);">
             <div class="section-container">
@@ -628,6 +652,7 @@ function quemSomosPage() {
                 </div>
             </div>
         </section>
+
         <!-- CTA -->
         <section class="cta-banner">
             <div class="section-container">
@@ -641,6 +666,7 @@ function quemSomosPage() {
         </section>
     </div>`;
 }
+
 function contatoPage() {
     return `
     <div class="page-transition">
@@ -725,6 +751,7 @@ function contatoPage() {
         </section>
     </div>`;
 }
+
 function notFoundPage() {
     return `
     <div class="page-transition">
@@ -738,6 +765,8 @@ function notFoundPage() {
         </section>
     </div>`;
 }
+
+// ─── CARD HELPERS ───
 function productCard(title, desc, img, badge, features) {
     return `
     <div class="product-card reveal">
@@ -759,6 +788,7 @@ function productCard(title, desc, img, badge, features) {
         </div>
     </div>`;
 }
+
 function recipeCard(recipe) {
     return `
     <a href="/receitas/${recipe.id}" data-link class="recipe-card reveal">
@@ -774,6 +804,11 @@ function recipeCard(recipe) {
         </div>
     </a>`;
 }
+
+
+// ═══════════════════════════════════════════
+// SPA ROUTER
+// ═══════════════════════════════════════════
 const routes = [
     { path: '/', handler: homePage },
     { path: '/produtos', handler: produtosPage },
@@ -781,22 +816,34 @@ const routes = [
     { path: '/quem-somos', handler: quemSomosPage },
     { path: '/contato', handler: contatoPage },
 ];
+
 function resolveRoute(path) {
+    // Clean path
     path = path.replace(/\/+$/, '') || '/';
+
+    // Check static routes
     const staticRoute = routes.find(r => r.path === path);
     if (staticRoute) return staticRoute.handler();
+
+    // Check dynamic route for recipe detail
     const recipeMatch = path.match(/^\/receitas\/(.+)$/);
     if (recipeMatch) return receitaDetailPage(recipeMatch[1]);
+
     return notFoundPage();
 }
+
 function navigateTo(url) {
     history.pushState(null, null, url);
     renderPage();
 }
+
 function renderPage() {
     const app = document.getElementById('app');
     const path = window.location.pathname;
+
     app.innerHTML = resolveRoute(path);
+
+    // Update active nav link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
@@ -806,9 +853,15 @@ function renderPage() {
             link.classList.add('active');
         }
     });
+
+    // Close mobile menu
     document.getElementById('navMenu').classList.remove('open');
     document.getElementById('navToggle').classList.remove('active');
+
+    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Update page title
     const titles = {
         '/': 'Granja Vitta | Ovo é Vida',
         '/produtos': 'Produtos | Granja Vitta',
@@ -817,17 +870,26 @@ function renderPage() {
         '/contato': 'Contato | Granja Vitta'
     };
     document.title = titles[path] || 'Granja Vitta | Ovo é Vida';
+
+    // Reinitialize page features
     setTimeout(() => {
         initRevealAnimations();
         initCounters();
         createParticles();
     }, 100);
 }
+
+// ─── EVENT LISTENERS ───
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove loader
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
     }, 1500);
+
+    // Render initial page
     renderPage();
+
+    // Handle all link clicks
     document.addEventListener('click', (e) => {
         const link = e.target.closest('[data-link]');
         if (link) {
@@ -835,23 +897,35 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateTo(link.getAttribute('href'));
         }
     });
+
+    // Handle browser back/forward
     window.addEventListener('popstate', renderPage);
+
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
         navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+        // Back to top button
         const backBtn = document.querySelector('.back-to-top');
         if (backBtn) backBtn.classList.toggle('visible', window.scrollY > 600);
     });
+
+    // Mobile nav toggle
     document.getElementById('navToggle').addEventListener('click', () => {
         document.getElementById('navMenu').classList.toggle('open');
         document.getElementById('navToggle').classList.toggle('active');
     });
+
+    // Add back to top button
     const backBtn = document.createElement('button');
     backBtn.className = 'back-to-top';
     backBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
     backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.appendChild(backBtn);
 });
+
+// ─── SCROLL REVEAL ───
 function initRevealAnimations() {
     const reveals = document.querySelectorAll('.reveal:not(.visible)');
     const observer = new IntersectionObserver((entries) => {
@@ -862,12 +936,16 @@ function initRevealAnimations() {
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
     reveals.forEach(el => observer.observe(el));
 }
+
+// ─── COUNTER ANIMATION ───
 function initCounters() {
     const counters = document.querySelectorAll('[data-count]');
     counters.forEach(counter => {
         if (counter.dataset.animated) return;
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -878,17 +956,22 @@ function initCounters() {
                 }
             });
         }, { threshold: 0.5 });
+
         observer.observe(counter);
     });
 }
+
 function animateCounter(el, target) {
     const duration = 2000;
     const start = performance.now();
+
     function update(currentTime) {
         const elapsed = currentTime - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); 
+        const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+
         const current = Math.floor(eased * target);
+
         if (target >= 1000000) {
             el.textContent = (current / 1000000).toFixed(1) + 'M+';
         } else if (target >= 1000) {
@@ -896,16 +979,21 @@ function animateCounter(el, target) {
         } else {
             el.textContent = current + (target === 100 ? '%' : '+');
         }
+
         if (progress < 1) {
             requestAnimationFrame(update);
         }
     }
+
     requestAnimationFrame(update);
 }
+
+// ─── PARTICLES ───
 function createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
     container.innerHTML = '';
+
     for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -917,12 +1005,15 @@ function createParticles() {
         container.appendChild(particle);
     }
 }
+
+// ─── CONTACT FORM HANDLER ───
 function handleContactSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
     btn.innerHTML = '✓ Mensagem Enviada!';
     btn.style.background = 'linear-gradient(135deg, #2D7D46 0%, #45B369 100%)';
+
     setTimeout(() => {
         btn.innerHTML = originalText;
         btn.style.background = '';
